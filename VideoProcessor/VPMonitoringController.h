@@ -43,7 +43,10 @@
 
 @property (weak, nonatomic) id<VPMonitoringDelegate> delegate;
 
-- (void)runWithWatchedURL:(NSURL *)watchedURL destinationURL:(NSURL *)destinationURL;
+- (void)runWithWatchedURL:(NSURL *)watchedURL
+highQualityDestinationURL:(NSURL *)highQualityDestinationURL
+ compressedDestinationURL:(NSURL *)compressedDestinationURL;
+
 - (void)stop;
 
 @end

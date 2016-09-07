@@ -17,7 +17,7 @@
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
     NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor];
     imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
-    [imageData writeToFile:[NSString stringWithFormat:@"%@/resize.jpg", fileName] atomically:NO];
+    [imageData writeToFile:fileName atomically:NO];
 }
 
 @end

@@ -405,7 +405,8 @@ QueueWindowController * _queueWindowController;
         self.transferStatusLabel.stringValue = @"Ready to copy files...";
         
         [[self monitoringController] runWithWatchedURL:self.scratchURL
-                                        destinationURL:self.deathStarURL];
+                             highQualityDestinationURL:self.deathStarURL
+                              compressedDestinationURL:self.compressionURL];
         
         [[self monitoringController] setDelegate:self];
         

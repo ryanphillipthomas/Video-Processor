@@ -57,7 +57,8 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
 @implementation VPMonitoringController
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
-           destinationURL:(NSURL *)destinationURL
+highQualityDestinationURL:(NSURL *)highQualityDestinationURL
+ compressedDestinationURL:(NSURL *)compressedDestinationURL
 {
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
@@ -91,11 +92,17 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
                                            if ([event isFile]) {
                                                if ([event isCreated] || [event isModified]) {
                                                    if (![self fileIsBeingCopied:event.URL]) {
-                                                       [self startFileTransfer:event.URL
-                                                                destinationURL:destinationURL
-                                                                    watchedURL:watchedURL
-                                                                   routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
-                                                                  locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
+                                                       [self startHighQualityFileTransfer:event.URL
+                                                                           destinationURL:highQualityDestinationURL
+                                                                               watchedURL:watchedURL
+                                                                              routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
+                                                                             locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
+                                                       
+                                                       [self startCompressedFileTransfer:event.URL
+                                                                          destinationURL:compressedDestinationURL
+                                                                              watchedURL:watchedURL
+                                                                             routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
+                                                                            locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
                                                    }
                                                }
                                            }
@@ -152,12 +159,13 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
 }
 
 
-- (void)startFileTransfer:(NSURL *)sourceURL
-           destinationURL:(NSURL *)destinationURL
-               watchedURL:(NSURL *)watchedURL
-              routineName:(NSString *)routineName
-             locationName:(NSString *)locationName
+- (void)startHighQualityFileTransfer:(NSURL *)sourceURL
+                      destinationURL:(NSURL *)destinationURL
+                          watchedURL:(NSURL *)watchedURL
+                         routineName:(NSString *)routineName
+                        locationName:(NSString *)locationName
 {
+    //The following performs the high quality video file transfers...
     __block NSURL *blockDestinationURL = destinationURL;
     __block NSURL *blockSourceURL = sourceURL;
     __block NSString *blockRoutineName = routineName;
@@ -183,32 +191,108 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
                 NSLog(@"Failed to create directory \"%@\". Error: %@", [blockDestinationURL path], error);
             }
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                
-                //detect quality settings and change??
                 [self.delegate didAddFileToQueSourceURL:blockSourceURL andDestination:blockDestinationURL];
-                
-//                [self getImageAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
-                [self getVideoAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
             }];
         }
     }];
 }
 
+- (void)startCompressedFileTransfer:(NSURL *)sourceURL
+                     destinationURL:(NSURL *)destinationURL
+                         watchedURL:(NSURL *)watchedURL
+                        routineName:(NSString *)routineName
+                       locationName:(NSString *)locationName
+{
+    //The following performs the compressed quality video file transfers...
+    
+    __block NSURL *blockDestinationURL = destinationURL;
+    __block NSURL *blockSourceURL = sourceURL;
+    __block NSString *blockRoutineName = routineName;
+    __block NSString *blockLocationName = locationName;
+    
+    [[[SUSaveQue sharedManager] saveQueue] addOperationWithBlock:^{
+        if ([[NSFileManager defaultManager] isReadableFileAtPath:[blockSourceURL path]] ) {
+            
+            NSString *folderName = blockRoutineName;
+            
+            if (blockLocationName) {
+                blockDestinationURL = [blockDestinationURL URLByAppendingPathComponent:blockLocationName];
+            }
+            
+            if (blockRoutineName) {
+                blockDestinationURL = [blockDestinationURL URLByAppendingPathComponent:folderName];
+            }
+            
+            NSFileManager *fileManager= [NSFileManager defaultManager];
+            NSError *error = nil;
+            if(![fileManager createDirectoryAtPath:[blockDestinationURL path] withIntermediateDirectories:YES attributes:nil error:&error]) {
+                // An error has occurred, do something to handle it
+                NSLog(@"Failed to create directory \"%@\". Error: %@", [blockDestinationURL path], error);
+            }
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                if ([self isPhotoType:blockSourceURL]) {
+                    [self getImageAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
+                }
+                
+                if ([self isVideoType:blockSourceURL]) {
+                    [self getVideoAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
+                }
+            }];
+        }
+    }];
+}
+
+- (bool)isPhotoType:(NSURL *)sourceURL
+{
+    NSString *url = [sourceURL path];
+    if ([url containsString:@"Photo"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (bool)isVideoType:(NSURL *)sourceURL
+{
+    NSString *url = [sourceURL path];
+    if ([url containsString:@"Video"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)getImageAtURL:(NSURL *)url andSaveToSourceURL:(NSURL *)sourceURL
 {
+    NSArray *parts = [url pathComponents];
+    NSString *filename = [parts lastObject];
+    NSString *finalFileName = [NSString stringWithFormat:@"lq_%@", filename];
+    NSURL *blockDestinationURL = [[url URLByDeletingLastPathComponent] URLByAppendingPathComponent:finalFileName];
+
     //todo dynamically detect image size and do a scaled reduction...
     NSSize testSize = NSMakeSize (200, 200);
     NSImage *sourceImage = [[NSImage alloc] initByReferencingURL:url];
     NSImage *resizedImage = [self imageResize:sourceImage newSize:testSize];
-    [resizedImage saveAsJpegWithName:sourceURL.path];
+    [resizedImage saveAsJpegWithName:blockDestinationURL.path];
+    
+    //iniate file copy transfer to compressed location....
+    [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
 }
 
 -(void)getVideoAtURL:(NSURL *)url andSaveToSourceURL:(NSURL *)sourceURL
 {
     //todo save as orginal name just with additional options...
-    NSURL *blockDestinationURL = [sourceURL URLByAppendingPathComponent:@"/test.mov"];
+    
+    NSArray *parts = [url pathComponents];
+    NSString *filename = [parts lastObject];
+    NSString *finalFileName = [NSString stringWithFormat:@"lq_%@", filename];
+    
+    NSURL *blockDestinationURL = [[url URLByDeletingLastPathComponent] URLByAppendingPathComponent:finalFileName];
     [self convertVideoToLowQuailtyWithInputURL:url outputURL:blockDestinationURL handler:^(AVAssetExportSession *session) {
-        //do nothing
+        
+        //iniate file copy transfer to compressed location....
+        [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
     }];
 }
 
@@ -223,6 +307,7 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
     exportSession.outputFileType = AVFileTypeQuickTimeMovie;
     [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
      {
+         
          handler(exportSession);
      }];
 }
