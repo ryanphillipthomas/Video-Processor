@@ -16,10 +16,25 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [self registerDefaults];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+    return YES;
+}
+
+- (void)registerDefaults {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"Media Type" : @"",
+                                                              @"ScratchURL" : @"",
+                                                              @"DeathStarURL" : @"",
+                                                              @"Location Name" : @"",
+                                                              @"Routine Name" : @"",
+                                                              @"CompressionURL" : @""}];
 }
 
 @end

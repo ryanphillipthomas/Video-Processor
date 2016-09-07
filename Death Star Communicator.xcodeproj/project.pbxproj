@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		940A4E7B1D78C0B6008D236A /* NSImage+saveAsJpegWithName.m in Sources */ = {isa = PBXBuildFile; fileRef = 940A4E7A1D78C0B6008D236A /* NSImage+saveAsJpegWithName.m */; };
+		946AA3761C3F3E2D00697734 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA3751C3F3E2D00697734 /* AppDelegate.m */; };
+		946AA3791C3F3E2D00697734 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA3781C3F3E2D00697734 /* main.m */; };
+		946AA37C1C3F3E2D00697734 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA37B1C3F3E2D00697734 /* ViewController.m */; };
+		946AA37E1C3F3E2D00697734 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946AA37D1C3F3E2D00697734 /* Assets.xcassets */; };
+		946AA3811C3F3E2D00697734 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946AA37F1C3F3E2D00697734 /* Main.storyboard */; };
+		946AA38C1C3F3E2D00697734 /* VideoProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA38B1C3F3E2D00697734 /* VideoProcessorTests.m */; };
+		946AA3971C3F3E2D00697734 /* VideoProcessorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA3961C3F3E2D00697734 /* VideoProcessorUITests.m */; };
+		946AA3AF1C3F573800697734 /* VPMonitoringController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AA3AD1C3F573800697734 /* VPMonitoringController.m */; };
+		9489FC251C51DCCC008057C4 /* FileCopyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC211C51DCCC008057C4 /* FileCopyCell.m */; };
+		9489FC2C1C51DF53008057C4 /* FileCopyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC291C51DF53008057C4 /* FileCopyManager.m */; };
+		9489FC2D1C51DF53008057C4 /* FileCopyOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC2B1C51DF53008057C4 /* FileCopyOperation.m */; };
+		9489FC361C51EE38008057C4 /* Queue.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9489FC331C51EE38008057C4 /* Queue.xib */; };
+		9489FC371C51EE38008057C4 /* QueueWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC351C51EE38008057C4 /* QueueWindowController.m */; };
+		949F71241C505FC000E39828 /* SUSaveQue.m in Sources */ = {isa = PBXBuildFile; fileRef = 949F71221C505FC000E39828 /* SUSaveQue.m */; };
+		94AC1BCB1C4AC3DE00D67D9E /* CDEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */; };
+		94AC1BCD1C4AC56000D67D9E /* CDEvents.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94B2B6AB1C5677B300BB765C /* death_star_icon in Resources */ = {isa = PBXBuildFile; fileRef = 94B2B6AA1C5677B300BB765C /* death_star_icon */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		940A4E741D789010008D236A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946AA3A41C3F553300697734 /* CDEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CDEvents;
+		};
+		940A4E761D789010008D236A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946AA3A41C3F553300697734 /* CDEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C6D067D1167CC7400343E46;
+			remoteInfo = CDEventsTestApp;
+		};
+		946AA3881C3F3E2D00697734 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946AA3691C3F3E2D00697734 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 946AA3701C3F3E2D00697734;
+			remoteInfo = VideoProcessor;
+		};
+		946AA3931C3F3E2D00697734 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946AA3691C3F3E2D00697734 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 946AA3701C3F3E2D00697734;
+			remoteInfo = VideoProcessor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		94AC1BCC1C4AC54900D67D9E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				94AC1BCD1C4AC56000D67D9E /* CDEvents.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		940A4E791D78C0B6008D236A /* NSImage+saveAsJpegWithName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+saveAsJpegWithName.h"; sourceTree = "<group>"; };
+		940A4E7A1D78C0B6008D236A /* NSImage+saveAsJpegWithName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+saveAsJpegWithName.m"; sourceTree = "<group>"; };
+		946AA3711C3F3E2D00697734 /* Death Star Communicator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Death Star Communicator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		946AA3741C3F3E2D00697734 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		946AA3751C3F3E2D00697734 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		946AA3781C3F3E2D00697734 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		946AA37A1C3F3E2D00697734 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		946AA37B1C3F3E2D00697734 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		946AA37D1C3F3E2D00697734 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		946AA3801C3F3E2D00697734 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		946AA3821C3F3E2D00697734 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946AA3871C3F3E2D00697734 /* Death Star Communicator.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Death Star Communicator.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		946AA38B1C3F3E2D00697734 /* VideoProcessorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoProcessorTests.m; sourceTree = "<group>"; };
+		946AA38D1C3F3E2D00697734 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946AA3921C3F3E2D00697734 /* Death Star Communicator.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Death Star Communicator.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		946AA3961C3F3E2D00697734 /* VideoProcessorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoProcessorUITests.m; sourceTree = "<group>"; };
+		946AA3981C3F3E2D00697734 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946AA3A41C3F553300697734 /* CDEvents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CDEvents.xcodeproj; path = Frameworks/CDEvents/CDEvents.xcodeproj; sourceTree = "<group>"; };
+		946AA3AD1C3F573800697734 /* VPMonitoringController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPMonitoringController.m; sourceTree = "<group>"; };
+		946AA3AE1C3F573800697734 /* VPMonitoringController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPMonitoringController.h; sourceTree = "<group>"; };
+		9489FC201C51DCCC008057C4 /* FileCopyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCopyCell.h; sourceTree = "<group>"; };
+		9489FC211C51DCCC008057C4 /* FileCopyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCopyCell.m; sourceTree = "<group>"; };
+		9489FC281C51DF53008057C4 /* FileCopyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCopyManager.h; sourceTree = "<group>"; };
+		9489FC291C51DF53008057C4 /* FileCopyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCopyManager.m; sourceTree = "<group>"; };
+		9489FC2A1C51DF53008057C4 /* FileCopyOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCopyOperation.h; sourceTree = "<group>"; };
+		9489FC2B1C51DF53008057C4 /* FileCopyOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCopyOperation.m; sourceTree = "<group>"; };
+		9489FC331C51EE38008057C4 /* Queue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Queue.xib; sourceTree = "<group>"; };
+		9489FC341C51EE38008057C4 /* QueueWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueWindowController.h; sourceTree = "<group>"; };
+		9489FC351C51EE38008057C4 /* QueueWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueWindowController.m; sourceTree = "<group>"; };
+		949F71221C505FC000E39828 /* SUSaveQue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSaveQue.m; sourceTree = "<group>"; };
+		949F71231C505FC000E39828 /* SUSaveQue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSaveQue.h; sourceTree = "<group>"; };
+		94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CDEvents.framework; path = Frameworks/CDEvents.framework; sourceTree = "<group>"; };
+		94B2B6AA1C5677B300BB765C /* death_star_icon */ = {isa = PBXFileReference; lastKnownFileType = file; path = death_star_icon; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		946AA36E1C3F3E2D00697734 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94AC1BCB1C4AC3DE00D67D9E /* CDEvents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA3841C3F3E2D00697734 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA38F1C3F3E2D00697734 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		940A4E701D789010008D236A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				940A4E751D789010008D236A /* CDEvents.framework */,
+				940A4E771D789010008D236A /* CDEventsTestApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		946AA3681C3F3E2D00697734 = {
+			isa = PBXGroup;
+			children = (
+				94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */,
+				946AA3731C3F3E2D00697734 /* VideoProcessor */,
+				946AA38A1C3F3E2D00697734 /* VideoProcessorTests */,
+				946AA3951C3F3E2D00697734 /* VideoProcessorUITests */,
+				946AA3721C3F3E2D00697734 /* Products */,
+				946AA3A41C3F553300697734 /* CDEvents.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		946AA3721C3F3E2D00697734 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				946AA3711C3F3E2D00697734 /* Death Star Communicator.app */,
+				946AA3871C3F3E2D00697734 /* Death Star Communicator.xctest */,
+				946AA3921C3F3E2D00697734 /* Death Star Communicator.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		946AA3731C3F3E2D00697734 /* VideoProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				94B2B6AA1C5677B300BB765C /* death_star_icon */,
+				9489FC331C51EE38008057C4 /* Queue.xib */,
+				9489FC341C51EE38008057C4 /* QueueWindowController.h */,
+				9489FC351C51EE38008057C4 /* QueueWindowController.m */,
+				9489FC281C51DF53008057C4 /* FileCopyManager.h */,
+				9489FC291C51DF53008057C4 /* FileCopyManager.m */,
+				9489FC2A1C51DF53008057C4 /* FileCopyOperation.h */,
+				9489FC2B1C51DF53008057C4 /* FileCopyOperation.m */,
+				9489FC201C51DCCC008057C4 /* FileCopyCell.h */,
+				9489FC211C51DCCC008057C4 /* FileCopyCell.m */,
+				949F71221C505FC000E39828 /* SUSaveQue.m */,
+				949F71231C505FC000E39828 /* SUSaveQue.h */,
+				946AA3741C3F3E2D00697734 /* AppDelegate.h */,
+				946AA3751C3F3E2D00697734 /* AppDelegate.m */,
+				946AA37A1C3F3E2D00697734 /* ViewController.h */,
+				946AA37B1C3F3E2D00697734 /* ViewController.m */,
+				946AA3AD1C3F573800697734 /* VPMonitoringController.m */,
+				946AA3AE1C3F573800697734 /* VPMonitoringController.h */,
+				946AA37D1C3F3E2D00697734 /* Assets.xcassets */,
+				946AA37F1C3F3E2D00697734 /* Main.storyboard */,
+				946AA3821C3F3E2D00697734 /* Info.plist */,
+				946AA3771C3F3E2D00697734 /* Supporting Files */,
+				940A4E791D78C0B6008D236A /* NSImage+saveAsJpegWithName.h */,
+				940A4E7A1D78C0B6008D236A /* NSImage+saveAsJpegWithName.m */,
+			);
+			path = VideoProcessor;
+			sourceTree = "<group>";
+		};
+		946AA3771C3F3E2D00697734 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				946AA3781C3F3E2D00697734 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		946AA38A1C3F3E2D00697734 /* VideoProcessorTests */ = {
+			isa = PBXGroup;
+			children = (
+				946AA38B1C3F3E2D00697734 /* VideoProcessorTests.m */,
+				946AA38D1C3F3E2D00697734 /* Info.plist */,
+			);
+			path = VideoProcessorTests;
+			sourceTree = "<group>";
+		};
+		946AA3951C3F3E2D00697734 /* VideoProcessorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				946AA3961C3F3E2D00697734 /* VideoProcessorUITests.m */,
+				946AA3981C3F3E2D00697734 /* Info.plist */,
+			);
+			path = VideoProcessorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		946AA3701C3F3E2D00697734 /* Death Star Communicator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946AA39B1C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star Communicator" */;
+			buildPhases = (
+				946AA36D1C3F3E2D00697734 /* Sources */,
+				946AA36E1C3F3E2D00697734 /* Frameworks */,
+				946AA36F1C3F3E2D00697734 /* Resources */,
+				94AC1BCC1C4AC54900D67D9E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Death Star Communicator";
+			productName = VideoProcessor;
+			productReference = 946AA3711C3F3E2D00697734 /* Death Star Communicator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		946AA3861C3F3E2D00697734 /* Death Star CommunicatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946AA39E1C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star CommunicatorTests" */;
+			buildPhases = (
+				946AA3831C3F3E2D00697734 /* Sources */,
+				946AA3841C3F3E2D00697734 /* Frameworks */,
+				946AA3851C3F3E2D00697734 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				946AA3891C3F3E2D00697734 /* PBXTargetDependency */,
+			);
+			name = "Death Star CommunicatorTests";
+			productName = VideoProcessorTests;
+			productReference = 946AA3871C3F3E2D00697734 /* Death Star Communicator.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		946AA3911C3F3E2D00697734 /* Death Star CommunicatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946AA3A11C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star CommunicatorUITests" */;
+			buildPhases = (
+				946AA38E1C3F3E2D00697734 /* Sources */,
+				946AA38F1C3F3E2D00697734 /* Frameworks */,
+				946AA3901C3F3E2D00697734 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				946AA3941C3F3E2D00697734 /* PBXTargetDependency */,
+			);
+			name = "Death Star CommunicatorUITests";
+			productName = VideoProcessorUITests;
+			productReference = 946AA3921C3F3E2D00697734 /* Death Star Communicator.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		946AA3691C3F3E2D00697734 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Ryan Phillip Thomas";
+				TargetAttributes = {
+					946AA3701C3F3E2D00697734 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					946AA3861C3F3E2D00697734 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 946AA3701C3F3E2D00697734;
+					};
+					946AA3911C3F3E2D00697734 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 946AA3701C3F3E2D00697734;
+					};
+				};
+			};
+			buildConfigurationList = 946AA36C1C3F3E2D00697734 /* Build configuration list for PBXProject "Death Star Communicator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 946AA3681C3F3E2D00697734;
+			productRefGroup = 946AA3721C3F3E2D00697734 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 940A4E701D789010008D236A /* Products */;
+					ProjectRef = 946AA3A41C3F553300697734 /* CDEvents.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				946AA3701C3F3E2D00697734 /* Death Star Communicator */,
+				946AA3861C3F3E2D00697734 /* Death Star CommunicatorTests */,
+				946AA3911C3F3E2D00697734 /* Death Star CommunicatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		940A4E751D789010008D236A /* CDEvents.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDEvents.framework;
+			remoteRef = 940A4E741D789010008D236A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		940A4E771D789010008D236A /* CDEventsTestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CDEventsTestApp.app;
+			remoteRef = 940A4E761D789010008D236A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		946AA36F1C3F3E2D00697734 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946AA37E1C3F3E2D00697734 /* Assets.xcassets in Resources */,
+				946AA3811C3F3E2D00697734 /* Main.storyboard in Resources */,
+				94B2B6AB1C5677B300BB765C /* death_star_icon in Resources */,
+				9489FC361C51EE38008057C4 /* Queue.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA3851C3F3E2D00697734 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA3901C3F3E2D00697734 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		946AA36D1C3F3E2D00697734 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9489FC2D1C51DF53008057C4 /* FileCopyOperation.m in Sources */,
+				946AA37C1C3F3E2D00697734 /* ViewController.m in Sources */,
+				946AA3791C3F3E2D00697734 /* main.m in Sources */,
+				9489FC2C1C51DF53008057C4 /* FileCopyManager.m in Sources */,
+				9489FC251C51DCCC008057C4 /* FileCopyCell.m in Sources */,
+				946AA3761C3F3E2D00697734 /* AppDelegate.m in Sources */,
+				9489FC371C51EE38008057C4 /* QueueWindowController.m in Sources */,
+				946AA3AF1C3F573800697734 /* VPMonitoringController.m in Sources */,
+				940A4E7B1D78C0B6008D236A /* NSImage+saveAsJpegWithName.m in Sources */,
+				949F71241C505FC000E39828 /* SUSaveQue.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA3831C3F3E2D00697734 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946AA38C1C3F3E2D00697734 /* VideoProcessorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946AA38E1C3F3E2D00697734 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946AA3971C3F3E2D00697734 /* VideoProcessorUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		946AA3891C3F3E2D00697734 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 946AA3701C3F3E2D00697734 /* Death Star Communicator */;
+			targetProxy = 946AA3881C3F3E2D00697734 /* PBXContainerItemProxy */;
+		};
+		946AA3941C3F3E2D00697734 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 946AA3701C3F3E2D00697734 /* Death Star Communicator */;
+			targetProxy = 946AA3931C3F3E2D00697734 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		946AA37F1C3F3E2D00697734 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				946AA3801C3F3E2D00697734 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		946AA3991C3F3E2D00697734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		946AA39A1C3F3E2D00697734 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		946AA39C1C3F3E2D00697734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = VideoProcessor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessor;
+				PRODUCT_NAME = "Death Star Communicator";
+			};
+			name = Debug;
+		};
+		946AA39D1C3F3E2D00697734 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = VideoProcessor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessor;
+				PRODUCT_NAME = "Death Star Communicator";
+			};
+			name = Release;
+		};
+		946AA39F1C3F3E2D00697734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VideoProcessorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessorTests;
+				PRODUCT_NAME = "Death Star Communicator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Death Star Communicator.app/Contents/MacOS/Death Star Communicator";
+			};
+			name = Debug;
+		};
+		946AA3A01C3F3E2D00697734 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VideoProcessorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessorTests;
+				PRODUCT_NAME = "Death Star Communicator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Death Star Communicator.app/Contents/MacOS/Death Star Communicator";
+			};
+			name = Release;
+		};
+		946AA3A21C3F3E2D00697734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VideoProcessorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessorUITests;
+				PRODUCT_NAME = "Death Star Communicator";
+				TEST_TARGET_NAME = VideoProcessor;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		946AA3A31C3F3E2D00697734 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VideoProcessorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessorUITests;
+				PRODUCT_NAME = "Death Star Communicator";
+				TEST_TARGET_NAME = VideoProcessor;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		946AA36C1C3F3E2D00697734 /* Build configuration list for PBXProject "Death Star Communicator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946AA3991C3F3E2D00697734 /* Debug */,
+				946AA39A1C3F3E2D00697734 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946AA39B1C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star Communicator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946AA39C1C3F3E2D00697734 /* Debug */,
+				946AA39D1C3F3E2D00697734 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946AA39E1C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star CommunicatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946AA39F1C3F3E2D00697734 /* Debug */,
+				946AA3A01C3F3E2D00697734 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946AA3A11C3F3E2D00697734 /* Build configuration list for PBXNativeTarget "Death Star CommunicatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946AA3A21C3F3E2D00697734 /* Debug */,
+				946AA3A31C3F3E2D00697734 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 946AA3691C3F3E2D00697734 /* Project object */;
+}
