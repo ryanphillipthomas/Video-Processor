@@ -31,9 +31,13 @@
 
 @class CDEvents;
 
+@import AppKit;
+@import AVFoundation;
+
 @protocol VPMonitoringDelegate <NSObject>
 - (void)didUpdateFolderStructure;
 - (void)didAddFileToQueSourceURL:(NSURL *)sourceURL andDestination:(NSURL *)destinationURL;
+- (void)didUpdateCompressionValue:(NSNumber *)value;
 @end
 
 
@@ -42,6 +46,11 @@
 }
 
 @property (weak, nonatomic) id<VPMonitoringDelegate> delegate;
+@property (nonatomic, strong) NSTimer *exportProgressBarTimer;
+@property (nonatomic, strong) NSNumber *exportProgressBarValue;
+@property (nonatomic, strong) AVAssetExportSession *exportSession;
+
+
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL

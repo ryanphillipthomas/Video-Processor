@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -654,10 +654,10 @@
                     <window key="window" title="Death Star Communicator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="514" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="514" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="514" height="270"/>
-                        <value key="maxSize" type="size" width="514" height="270"/>
+                        <value key="minSize" type="size" width="514" height="300"/>
+                        <value key="maxSize" type="size" width="514" height="300"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -672,11 +672,11 @@
             <objects>
                 <viewController title="Death Star Communicator" id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="514" height="271"/>
+                        <rect key="frame" x="0.0" y="0.0" width="514" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton toolTip="Select what type of media you are shooting." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0pN-bQ-IDH">
-                                <rect key="frame" x="412" y="237" width="95" height="26"/>
+                                <rect key="frame" x="412" y="266" width="95" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Video" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0cS-XS-XUZ" id="yp4-6p-Krh">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -692,7 +692,7 @@
                                 </connections>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1B9-nq-UbD">
-                                <rect key="frame" x="166" y="209" width="176" height="22"/>
+                                <rect key="frame" x="166" y="238" width="176" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Set Location Name" drawsBackground="YES" id="xZq-p4-hrj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -703,7 +703,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rS6-u8-wKh">
-                                <rect key="frame" x="166" y="76" width="176" height="22"/>
+                                <rect key="frame" x="166" y="121" width="176" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Set Routine Name" drawsBackground="YES" id="BI0-lS-qlw">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -714,7 +714,7 @@
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJa-bQ-spN">
-                                <rect key="frame" x="160" y="40" width="188" height="32"/>
+                                <rect key="frame" x="160" y="85" width="188" height="32"/>
                                 <string key="toolTip">Create a new local routine subfolder in your root capture scratch disk location. This must be performed prior to recording each routine.</string>
                                 <buttonCell key="cell" type="push" title="Create Routine Subfolder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rip-7a-f35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -725,7 +725,7 @@
                                 </connections>
                             </button>
                             <button toolTip="View the active file transfer queue." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVx-Hl-tT9">
-                                <rect key="frame" x="408" y="202" width="102" height="32"/>
+                                <rect key="frame" x="408" y="231" width="102" height="32"/>
                                 <buttonCell key="cell" type="push" title="View Queue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wpk-Ry-fhd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -735,7 +735,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0O-68-DHD">
-                                <rect key="frame" x="261" y="171" width="249" height="32"/>
+                                <rect key="frame" x="261" y="200" width="249" height="32"/>
                                 <string key="toolTip">Select the location of the death star's desktop folder. Typically you will need to first connect to the death star to your machine by using Finder / Go / Connect To Server / smb://THEDEATHSTAR. </string>
                                 <buttonCell key="cell" type="push" title="Choose Death Star Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cas-XR-YUw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -746,7 +746,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ST-64-l36">
-                                <rect key="frame" x="24" y="161" width="225" height="14"/>
+                                <rect key="frame" x="24" y="190" width="225" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Not Set" id="oB8-RM-O89">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -754,7 +754,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUu-iE-8iC">
-                                <rect key="frame" x="281" y="161" width="225" height="14"/>
+                                <rect key="frame" x="281" y="190" width="225" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Not Set" id="wGs-6L-sw5">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -762,10 +762,10 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" doubleValue="36" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CQS-jg-wHB">
-                                <rect key="frame" x="246" y="23" width="16" height="16"/>
+                                <rect key="frame" x="246" y="63" width="16" height="16"/>
                             </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDb-fu-vJc">
-                                <rect key="frame" x="27" y="0.0" width="461" height="17"/>
+                                <rect key="frame" x="27" y="40" width="461" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ready to transfer files..." id="aCA-n9-xdx">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -773,7 +773,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vGV-vT-1mA">
-                                <rect key="frame" x="265" y="159" width="15" height="19"/>
+                                <rect key="frame" x="265" y="188" width="15" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="▹" id="PnU-7N-eFq">
                                     <font key="font" size="15" name="LucidaGrande"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -781,7 +781,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0v-dW-TUZ">
-                                <rect key="frame" x="4" y="123" width="249" height="32"/>
+                                <rect key="frame" x="4" y="152" width="249" height="32"/>
                                 <string key="toolTip">Select the location of the compression machine's capture scratch. Typically you will need to first connect to the compression machine to your machine by using Finder / Go / Connect To Server / smb://THECOMPRESSION. </string>
                                 <buttonCell key="cell" type="push" title="Choose Compression Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8ni-3v-fR4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -792,7 +792,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-5J-NYw">
-                                <rect key="frame" x="24" y="112" width="225" height="14"/>
+                                <rect key="frame" x="24" y="141" width="225" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Not Set" id="43I-EG-JTh">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -800,7 +800,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hzL-CU-CJ6">
-                                <rect key="frame" x="8" y="110" width="15" height="19"/>
+                                <rect key="frame" x="8" y="139" width="15" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="▹" id="oAj-10-zxF">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -808,7 +808,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lic-i9-Q82">
-                                <rect key="frame" x="8" y="159" width="15" height="19"/>
+                                <rect key="frame" x="8" y="188" width="15" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="▹" id="oWY-O7-ev8">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -816,7 +816,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-hc-NgS">
-                                <rect key="frame" x="4" y="171" width="249" height="32"/>
+                                <rect key="frame" x="4" y="200" width="249" height="32"/>
                                 <string key="toolTip">Select the location of your capture scratch root folder. Typically this will be the root folder of your external media hard drive and will also serve as the local backup for media captures.</string>
                                 <buttonCell key="cell" type="push" title="Choose Scratch Disk Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBZ-Ku-CMq">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -827,7 +827,7 @@
                                 </connections>
                             </button>
                             <popUpButton toolTip="Select what versions of media you want created / sent." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ke-Va-fPU">
-                                <rect key="frame" x="265" y="127" width="242" height="26"/>
+                                <rect key="frame" x="265" y="156" width="242" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="High Quality &amp; Compressed" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p3E-Wg-M4L" id="Fbi-9f-JZx">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -843,9 +843,21 @@
                                     <action selector="triggerMediaUpdate:" target="XfG-lQ-9wD" id="n6P-KQ-Or6"/>
                                 </connections>
                             </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vA6-B0-YRN">
+                                <rect key="frame" x="8" y="0.0" width="498" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ready to transfer files..." id="m71-18-dQ3">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hrt-qX-DcS">
+                                <rect key="frame" x="166" y="13" width="176" height="20"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="compressionIndicator" destination="hrt-qX-DcS" id="HVb-os-w5h"/>
                         <outlet property="compressionLocationLabel" destination="8eW-5J-NYw" id="KGF-47-YEE"/>
                         <outlet property="createRoutineSubFolderButton" destination="XJa-bQ-spN" id="abN-rF-8Bj"/>
                         <outlet property="deathStarLocationLabel" destination="KUu-iE-8iC" id="xFV-cb-Bla"/>
@@ -860,7 +872,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="607.5"/>
+            <point key="canvasLocation" x="75" y="607"/>
         </scene>
     </scenes>
 </document>

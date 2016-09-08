@@ -94,7 +94,9 @@ FileCopyManager * fileCopyManager;
     // once the operation is created is added to the queue using [fileCopyManager addOperation:].
     // ----------------------------------------------------------------------------------------------------
     if ([source checkResourceIsReachableAndReturnError:&srcError] && [destination checkResourceIsReachableAndReturnError:&dstError]) {
-        FileCopyOperation *opr = [[FileCopyOperation alloc]initWithSource:source andDestination:[NSURL fileURLWithPath:[destination.path stringByAppendingPathComponent:source.lastPathComponent] isDirectory:NO] andDelegate:self];
+        FileCopyOperation *opr = [[FileCopyOperation alloc]initWithSource:source
+                                                           andDestination:[NSURL fileURLWithPath:[destination.path stringByAppendingPathComponent:source.lastPathComponent] isDirectory:NO]
+                                                              andDelegate:self];
         [fileCopyManager addOPeration:opr];
     } else {
         srcError ? [NSAlert alertWithError:srcError] : nil;

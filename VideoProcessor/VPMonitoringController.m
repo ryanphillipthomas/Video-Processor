@@ -32,9 +32,6 @@
 #import "SUSaveQue.h"
 #import "NSImage+saveAsJpegWithName.h"
 
-@import AppKit;
-@import AVFoundation;
-
 #define CD_EVENTS_TEST_APP_USE_BLOCKS_API				1
 
 bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
@@ -55,6 +52,7 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
 
 
 @implementation VPMonitoringController
+
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL
@@ -302,16 +300,27 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
 {
     [[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPreset640x480];
-    exportSession.outputURL = outputURL;
-    exportSession.outputFileType = AVFileTypeQuickTimeMovie;
-    [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
+    self.exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPreset640x480];
+    self.exportSession.outputURL = outputURL;
+    self.exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+    [self.exportSession exportAsynchronouslyWithCompletionHandler:^(void)
      {
-         
-         handler(exportSession);
+         handler(self.exportSession);
      }];
+
+    self.exportProgressBarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateExportDisplay) userInfo:nil repeats:YES];
 }
 
+- (void)updateExportDisplay {
+    [self setExportProgressBarValue:[NSNumber numberWithFloat:self.exportSession.progress]];
+    [self.delegate didUpdateCompressionValue:self.exportProgressBarValue];
+    
+    if (self.exportProgressBarValue.floatValue > .99) {
+        [self.exportProgressBarTimer invalidate];
+        
+        [self.delegate didUpdateCompressionValue:@0];
+    }
+}
 
 - (NSImage *)imageResize:(NSImage*)anImage newSize:(NSSize)newSize {
     NSImage *sourceImage = anImage;

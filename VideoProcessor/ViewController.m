@@ -52,6 +52,13 @@ QueueWindowController * _queueWindowController;
     [_queueWindowController addFileCopyOperationWithSource:sourceURL andDestination:destinationURL];
 }
 
+- (void)didUpdateCompressionValue:(NSNumber *)value
+{
+    [self.compressionIndicator setMinValue:0.0];
+    [self.compressionIndicator setMaxValue:1.0];
+    [self.compressionIndicator setDoubleValue:value.floatValue];
+}
+
 - (void)didErrorFile:(NSString *)fileName
 {
     [self updateMonitoringStatusState:fileName];
