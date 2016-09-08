@@ -57,6 +57,9 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL
  compressedDestinationURL:(NSURL *)compressedDestinationURL
+     shouldSendCompressed:(BOOL)shouldSendCompressed
+    shouldSendFullQuality:(BOOL)shouldSendFullQuality
+
 {
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
@@ -90,17 +93,22 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
                                            if ([event isFile]) {
                                                if ([event isCreated] || [event isModified]) {
                                                    if (![self fileIsBeingCopied:event.URL]) {
-                                                       [self startHighQualityFileTransfer:event.URL
-                                                                           destinationURL:highQualityDestinationURL
-                                                                               watchedURL:watchedURL
-                                                                              routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
-                                                                             locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
                                                        
-                                                       [self startCompressedFileTransfer:event.URL
-                                                                          destinationURL:compressedDestinationURL
-                                                                              watchedURL:watchedURL
-                                                                             routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
-                                                                            locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
+                                                       if (shouldSendFullQuality) {
+                                                           [self startHighQualityFileTransfer:event.URL
+                                                                               destinationURL:highQualityDestinationURL
+                                                                                   watchedURL:watchedURL
+                                                                                  routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
+                                                                                 locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
+                                                       }
+                                                       
+                                                       if (shouldSendCompressed) {
+                                                           [self startCompressedFileTransfer:event.URL
+                                                                              destinationURL:compressedDestinationURL
+                                                                                  watchedURL:watchedURL
+                                                                                 routineName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 2]
+                                                                                locationName:[[event.URL pathComponents] objectAtIndex:[[event.URL pathComponents] count] - 3]];
+                                                       }
                                                    }
                                                }
                                            }

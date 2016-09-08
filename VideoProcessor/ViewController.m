@@ -106,6 +106,16 @@ QueueWindowController * _queueWindowController;
         }
     }
     
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"Quality Type"]) {
+        if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"Quality Type"] isEqualToString:@"High Quality Only"]) {
+            [self.qualityTypeSelector selectItemAtIndex:0];
+        } else if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"Quality Type"] isEqualToString:@"Compressed Only"]) {
+            [self.qualityTypeSelector selectItemAtIndex:1];
+        } else if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"Quality Type"] isEqualToString:@"High Quality & Compressed"]) {
+            [self.qualityTypeSelector selectItemAtIndex:2];
+        }
+    }
+    
     [self updateRoutineSubFolderButtonEnabledState];
 }
 
@@ -155,6 +165,8 @@ QueueWindowController * _queueWindowController;
     [self mediaTypeChanged:self.mediaTypeSelector.selectedItem.title];
     [self updateRoutineSubFolderButtonEnabledState];
     
+    [self stopMonitoring];
+    
     if (![self shouldEnableRoutineSubFolderButton]) {
         if (!self.isMonitoring) {
             [self startMonitoring];
@@ -162,10 +174,12 @@ QueueWindowController * _queueWindowController;
     }
 }
 
-//not yet implemented
+//not finished // but partially hooked up // need to investigate monitoring states
 - (IBAction)triggerQualityUpdate:(id)sender {
-    [self mediaTypeChanged:self.mediaTypeSelector.selectedItem.title];
+    [self qualityTypeChanged:self.qualityTypeSelector.selectedItem.title];
     [self updateRoutineSubFolderButtonEnabledState];
+    
+    [self stopMonitoring];
     
     if (![self shouldEnableRoutineSubFolderButton]) {
         if (!self.isMonitoring) {
@@ -345,6 +359,13 @@ QueueWindowController * _queueWindowController;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)qualityTypeChanged:(NSString *)string
+{
+    [[NSUserDefaults standardUserDefaults] setObject:string
+                                              forKey:@"Quality Type"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)locationNameChanged:(NSString *)string
 {
     [[NSUserDefaults standardUserDefaults] setObject:string
@@ -405,6 +426,24 @@ QueueWindowController * _queueWindowController;
     return YES;
 }
 
+- (BOOL)isCompressedSelected
+{
+    if (self.qualityTypeSelector.indexOfSelectedItem == 1 || self.qualityTypeSelector.indexOfSelectedItem == 2) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)isHighQualitySelected
+{
+    if (self.qualityTypeSelector.indexOfSelectedItem == 0 || self.qualityTypeSelector.indexOfSelectedItem == 2) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)startMonitoring
 {
     if ([self fileTransferManagerIsValid]) {
@@ -413,7 +452,9 @@ QueueWindowController * _queueWindowController;
         
         [[self monitoringController] runWithWatchedURL:self.scratchURL
                              highQualityDestinationURL:self.deathStarURL
-                              compressedDestinationURL:self.compressionURL];
+                              compressedDestinationURL:self.compressionURL
+                                shouldSendCompressed:[self isCompressedSelected]
+                                 shouldSendFullQuality:[self isHighQualitySelected]];
         
         [[self monitoringController] setDelegate:self];
         

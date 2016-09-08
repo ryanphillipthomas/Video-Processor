@@ -828,14 +828,14 @@
                             </button>
                             <popUpButton toolTip="Select what versions of media you want created / sent." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ke-Va-fPU">
                                 <rect key="frame" x="265" y="156" width="242" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="High Quality &amp; Compressed" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="p3E-Wg-M4L" id="Fbi-9f-JZx">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Fbi-9f-JZx">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="0Dv-gB-F6i">
                                         <items>
                                             <menuItem title="High Quality Only" id="Rye-OO-7a2"/>
                                             <menuItem title="Compressed Only" id="ulM-JS-FkB"/>
-                                            <menuItem title="High Quality &amp; Compressed" state="on" id="p3E-Wg-M4L"/>
+                                            <menuItem title="High Quality &amp; Compressed" id="p3E-Wg-M4L"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

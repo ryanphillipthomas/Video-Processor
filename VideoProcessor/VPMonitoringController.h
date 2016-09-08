@@ -54,7 +54,9 @@
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL
- compressedDestinationURL:(NSURL *)compressedDestinationURL;
+ compressedDestinationURL:(NSURL *)compressedDestinationURL
+     shouldSendCompressed:(BOOL)shouldSendCompressed
+    shouldSendFullQuality:(BOOL)shouldSendFullQuality;
 
 - (void)stop;
 
