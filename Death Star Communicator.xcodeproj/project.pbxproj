@@ -21,6 +21,11 @@
 		9489FC2D1C51DF53008057C4 /* FileCopyOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC2B1C51DF53008057C4 /* FileCopyOperation.m */; };
 		9489FC361C51EE38008057C4 /* Queue.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9489FC331C51EE38008057C4 /* Queue.xib */; };
 		9489FC371C51EE38008057C4 /* QueueWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489FC351C51EE38008057C4 /* QueueWindowController.m */; };
+		94911DAB1D8B2D2C0092EF52 /* SUUploaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94911DAA1D8B2D2C0092EF52 /* SUUploaderViewController.m */; };
+		94911DBA1D8B3D400092EF52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94911DB91D8B3D400092EF52 /* CFNetwork.framework */; };
+		94911DBC1D8B3D4F0092EF52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94911DBB1D8B3D4F0092EF52 /* Foundation.framework */; };
+		94911DF91D8B44EB0092EF52 /* libFTPKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94911DF41D8B44B10092EF52 /* libFTPKit.a */; };
+		94911DFA1D8B4C800092EF52 /* libFTPKit.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 94911DF41D8B44B10092EF52 /* libFTPKit.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		949F71241C505FC000E39828 /* SUSaveQue.m in Sources */ = {isa = PBXBuildFile; fileRef = 949F71221C505FC000E39828 /* SUSaveQue.m */; };
 		94AC1BCB1C4AC3DE00D67D9E /* CDEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */; };
 		94AC1BCD1C4AC56000D67D9E /* CDEvents.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -56,15 +61,37 @@
 			remoteGlobalIDString = 946AA3701C3F3E2D00697734;
 			remoteInfo = VideoProcessor;
 		};
+		94911DF31D8B44B10092EF52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F27BA1CE1802FE7E00584A9E;
+			remoteInfo = FTPKit;
+		};
+		94911DF51D8B44B10092EF52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 07F23C4818CA4C43002BDF93;
+			remoteInfo = "FTPKit Tests";
+		};
+		94911DF71D8B44C50092EF52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F27BA1CD1802FE7E00584A9E;
+			remoteInfo = FTPKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		94AC1BCC1C4AC54900D67D9E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				94911DFA1D8B4C800092EF52 /* libFTPKit.a in CopyFiles */,
 				94AC1BCD1C4AC56000D67D9E /* CDEvents.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +128,11 @@
 		9489FC331C51EE38008057C4 /* Queue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Queue.xib; sourceTree = "<group>"; };
 		9489FC341C51EE38008057C4 /* QueueWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueWindowController.h; sourceTree = "<group>"; };
 		9489FC351C51EE38008057C4 /* QueueWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueWindowController.m; sourceTree = "<group>"; };
+		94911DA91D8B2D2C0092EF52 /* SUUploaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUUploaderViewController.h; sourceTree = "<group>"; };
+		94911DAA1D8B2D2C0092EF52 /* SUUploaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUUploaderViewController.m; sourceTree = "<group>"; };
+		94911DB91D8B3D400092EF52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94911DBB1D8B3D4F0092EF52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FTPKit.xcodeproj; path = "Frameworks/FTPKit-master/FTPKit.xcodeproj"; sourceTree = "<group>"; };
 		949F71221C505FC000E39828 /* SUSaveQue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSaveQue.m; sourceTree = "<group>"; };
 		949F71231C505FC000E39828 /* SUSaveQue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSaveQue.h; sourceTree = "<group>"; };
 		94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CDEvents.framework; path = Frameworks/CDEvents.framework; sourceTree = "<group>"; };
@@ -112,6 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94911DF91D8B44EB0092EF52 /* libFTPKit.a in Frameworks */,
+				94911DBC1D8B3D4F0092EF52 /* Foundation.framework in Frameworks */,
+				94911DBA1D8B3D400092EF52 /* CFNetwork.framework in Frameworks */,
 				94AC1BCB1C4AC3DE00D67D9E /* CDEvents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,11 +180,14 @@
 		946AA3681C3F3E2D00697734 = {
 			isa = PBXGroup;
 			children = (
+				94911DBB1D8B3D4F0092EF52 /* Foundation.framework */,
+				94911DB91D8B3D400092EF52 /* CFNetwork.framework */,
 				94AC1BCA1C4AC3DE00D67D9E /* CDEvents.framework */,
 				946AA3731C3F3E2D00697734 /* VideoProcessor */,
 				946AA38A1C3F3E2D00697734 /* VideoProcessorTests */,
 				946AA3951C3F3E2D00697734 /* VideoProcessorUITests */,
 				946AA3721C3F3E2D00697734 /* Products */,
+				94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */,
 				946AA3A41C3F553300697734 /* CDEvents.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -183,6 +221,8 @@
 				946AA3751C3F3E2D00697734 /* AppDelegate.m */,
 				946AA37A1C3F3E2D00697734 /* ViewController.h */,
 				946AA37B1C3F3E2D00697734 /* ViewController.m */,
+				94911DA91D8B2D2C0092EF52 /* SUUploaderViewController.h */,
+				94911DAA1D8B2D2C0092EF52 /* SUUploaderViewController.m */,
 				946AA3AD1C3F573800697734 /* VPMonitoringController.m */,
 				946AA3AE1C3F573800697734 /* VPMonitoringController.h */,
 				946AA37D1C3F3E2D00697734 /* Assets.xcassets */,
@@ -221,6 +261,15 @@
 			path = VideoProcessorUITests;
 			sourceTree = "<group>";
 		};
+		94911DEF1D8B44B00092EF52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94911DF41D8B44B10092EF52 /* libFTPKit.a */,
+				94911DF61D8B44B10092EF52 /* FTPKit Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,6 +285,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				94911DF81D8B44C50092EF52 /* PBXTargetDependency */,
 			);
 			name = "Death Star Communicator";
 			productName = VideoProcessor;
@@ -316,6 +366,10 @@
 					ProductGroup = 940A4E701D789010008D236A /* Products */;
 					ProjectRef = 946AA3A41C3F553300697734 /* CDEvents.xcodeproj */;
 				},
+				{
+					ProductGroup = 94911DEF1D8B44B00092EF52 /* Products */;
+					ProjectRef = 94911DEE1D8B44B00092EF52 /* FTPKit.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -339,6 +393,20 @@
 			fileType = wrapper.application;
 			path = CDEventsTestApp.app;
 			remoteRef = 940A4E761D789010008D236A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94911DF41D8B44B10092EF52 /* libFTPKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFTPKit.a;
+			remoteRef = 94911DF31D8B44B10092EF52 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94911DF61D8B44B10092EF52 /* FTPKit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "FTPKit Tests.xctest";
+			remoteRef = 94911DF51D8B44B10092EF52 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -379,6 +447,7 @@
 				9489FC2D1C51DF53008057C4 /* FileCopyOperation.m in Sources */,
 				946AA37C1C3F3E2D00697734 /* ViewController.m in Sources */,
 				946AA3791C3F3E2D00697734 /* main.m in Sources */,
+				94911DAB1D8B2D2C0092EF52 /* SUUploaderViewController.m in Sources */,
 				9489FC2C1C51DF53008057C4 /* FileCopyManager.m in Sources */,
 				9489FC251C51DCCC008057C4 /* FileCopyCell.m in Sources */,
 				946AA3761C3F3E2D00697734 /* AppDelegate.m in Sources */,
@@ -417,6 +486,11 @@
 			isa = PBXTargetDependency;
 			target = 946AA3701C3F3E2D00697734 /* Death Star Communicator */;
 			targetProxy = 946AA3931C3F3E2D00697734 /* PBXContainerItemProxy */;
+		};
+		94911DF81D8B44C50092EF52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FTPKit;
+			targetProxy = 94911DF71D8B44C50092EF52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -523,6 +597,10 @@
 				INFOPLIST_FILE = VideoProcessor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessor;
 				PRODUCT_NAME = "Death Star Communicator";
 			};
@@ -540,6 +618,10 @@
 				INFOPLIST_FILE = VideoProcessor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ryanphillipthomas.VideoProcessor;
 				PRODUCT_NAME = "Death Star Communicator";
 			};

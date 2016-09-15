@@ -28,6 +28,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CDEvents/CDEventsDelegate.h>
+#import <FTPKit/FTPKit.h>
 
 @class CDEvents;
 
@@ -43,6 +44,7 @@
 
 @interface VPMonitoringController : NSObject <CDEventsDelegate , NSUserNotificationCenterDelegate> {
 	CDEvents				*_events;
+    FTPClient				*_ftp;
 }
 
 @property (weak, nonatomic) id<VPMonitoringDelegate> delegate;
@@ -57,6 +59,8 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
  compressedDestinationURL:(NSURL *)compressedDestinationURL
      shouldSendCompressed:(BOOL)shouldSendCompressed
     shouldSendFullQuality:(BOOL)shouldSendFullQuality;
+
+- (void)runWithWatchedURL:(NSURL *)watchedURL;
 
 - (void)stop;
 

@@ -660,17 +660,113 @@
                         <value key="maxSize" type="size" width="514" height="300"/>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="BbO-Rp-gdk" kind="relationship" relationship="window.shadowedContentViewController" id="VyQ-uI-s9s"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="kfw-wQ-9fk">
+            <objects>
+                <viewController id="BbO-Rp-gdk" sceneMemberID="viewController">
+                    <view key="view" id="RV7-Mv-O4k">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVW-fy-84n">
+                                <rect key="frame" x="118" y="133" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Recorder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t5t-rN-vmK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="XfG-lQ-9wD" kind="show" id="bf7-Ur-l9y"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-5a-f5P">
+                                <rect key="frame" x="240" y="133" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Uploader" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AyK-s7-kgz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="lhZ-LJ-AoQ" kind="show" id="XRb-j7-KGi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="6dt-bk-CLx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="677" y="199"/>
+        </scene>
+        <!--Uploader View Controller-->
+        <scene sceneID="E9L-Oq-RUp">
+            <objects>
+                <viewController showSeguePresentationStyle="single" id="lhZ-LJ-AoQ" customClass="SUUploaderViewController" sceneMemberID="viewController">
+                    <view key="view" id="tRf-Ve-EU7">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="256"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-Kv-3do">
+                                <rect key="frame" x="147" y="19" width="156" height="20"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vir-Hi-UFw">
+                                <rect key="frame" x="145" y="46" width="160" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="aBd-Vm-tEQ">
+                                    <font key="font" metaFont="system" size="11"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nku-Ig-ahB">
+                                <rect key="frame" x="113" y="185" width="225" height="32"/>
+                                <buttonCell key="cell" type="push" title="Choose Compression Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IO5-u9-OK4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="chooseCompressionLocation:" target="lhZ-LJ-AoQ" id="sGw-Of-cHg"/>
+                                </connections>
+                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="VVR-I5-ivQ">
+                                <rect key="frame" x="217" y="82" width="16" height="16"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4c9-dh-CXo">
+                                <rect key="frame" x="131" y="171" width="203" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Not Set" id="A5P-Vb-eN6">
+                                    <font key="font" metaFont="system" size="11"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lvb-FO-IJy">
+                                <rect key="frame" x="117" y="172" width="15" height="19"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="▹" id="WBy-St-xGW">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="compressionIndicator" destination="3cA-Kv-3do" id="FEt-vV-HVb"/>
+                        <outlet property="compressionLocationLabel" destination="4c9-dh-CXo" id="F01-9H-6Wl"/>
+                        <outlet property="monitoringIndicator" destination="VVR-I5-ivQ" id="AzQ-ud-faX"/>
+                        <outlet property="transferStatusLabel" destination="vir-Hi-UFw" id="c49-cI-0X6"/>
+                    </connections>
+                </viewController>
+                <customObject id="3ge-gv-YPP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941" y="605"/>
+        </scene>
         <!--Death Star Communicator-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Death Star Communicator" id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Death Star Communicator" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="514" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -843,14 +939,6 @@
                                     <action selector="triggerMediaUpdate:" target="XfG-lQ-9wD" id="n6P-KQ-Or6"/>
                                 </connections>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vA6-B0-YRN">
-                                <rect key="frame" x="8" y="0.0" width="498" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Ready to transfer files..." id="m71-18-dQ3">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hrt-qX-DcS">
                                 <rect key="frame" x="166" y="13" width="176" height="20"/>
                             </progressIndicator>
@@ -872,7 +960,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="607"/>
+            <point key="canvasLocation" x="75" y="662"/>
         </scene>
     </scenes>
 </document>

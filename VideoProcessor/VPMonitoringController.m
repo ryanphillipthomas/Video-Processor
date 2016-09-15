@@ -53,13 +53,80 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
 
 @implementation VPMonitoringController
 
+- (void)runWithWatchedURL:(NSURL *)watchedURL
+{
+    _ftp = [FTPClient clientWithHost:@"ftp.actorreplay.com"
+                                             port:21
+                                         username:@"video@actorreplay.com"
+                                         password:@"Ryan1217!"];
+
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+    
+    NSArray *watchedURLs = [NSArray arrayWithObject:watchedURL];
+    
+    CDEventsEventStreamCreationFlags creationFlags = kCDEventsDefaultEventStreamFlags;
+    
+    if (systemVersionIsAtLeast(10,6)) {
+        //creationFlags |= kFSEventStreamCreateFlagIgnoreSelf;
+    }
+    
+    if (systemVersionIsAtLeast(10,7)) {
+        creationFlags |= kFSEventStreamCreateFlagFileEvents;
+    }
+    
+#if CD_EVENTS_TEST_APP_USE_BLOCKS_API
+    _events = [[CDEvents alloc] initWithURLs:watchedURLs
+                                       block:^(CDEvents *watcher, CDEvent *event){
+                                           NSLog(@"[Block] URLWatcher: %@\nEvent: %@", watcher, event);
+                                           
+                                           if ([[event.URL lastPathComponent] isEqualToString:@".DS_Store"]) {
+                                               return;
+                                           }
+                                           
+                                           if ([event isDir]) {
+                                               [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                   [self.delegate didUpdateFolderStructure];
+                                               }];
+                                           }
+                                           
+                                           if ([event isFile]) {
+                                               if ([event isCreated] || [event isModified]) {
+                                                   if (![self fileIsBeingCopied:event.URL]) {
+                                                       [self startUploaderFileTransfer:event.URL watchedURL:watchedURL];
+                                                   }
+                                               }
+                                           }
+                                       }
+                                   onRunLoop:[NSRunLoop currentRunLoop]
+                        sinceEventIdentifier:kCDEventsSinceEventNow
+                        notificationLantency:CD_EVENTS_DEFAULT_NOTIFICATION_LATENCY
+                     ignoreEventsFromSubDirs:CD_EVENTS_DEFAULT_IGNORE_EVENT_FROM_SUB_DIRS
+                                 excludeURLs:nil
+                         streamCreationFlags:creationFlags];
+#else
+    _events = [[CDEvents alloc] initWithURLs:watchedURLs
+                                    delegate:self
+                                   onRunLoop:[NSRunLoop currentRunLoop]
+                        sinceEventIdentifier:kCDEventsSinceEventNow
+                        notificationLantency:CD_EVENTS_DEFAULT_NOTIFICATION_LATENCY
+                     ignoreEventsFromSubDirs:CD_EVENTS_DEFAULT_IGNORE_EVENT_FROM_SUB_DIRS
+                                 excludeURLs:nil
+                         streamCreationFlags:creationFlags];
+    //[_events setIgnoreEventsFromSubDirectories:YES];
+#endif
+    
+    NSLog(@"-[Uploader Stream Run]:\n%@\n------\n%@",
+          _events,
+          [_events streamDescription]);
+}
+
+
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL
  compressedDestinationURL:(NSURL *)compressedDestinationURL
      shouldSendCompressed:(BOOL)shouldSendCompressed
     shouldSendFullQuality:(BOOL)shouldSendFullQuality
-
 {
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
@@ -68,7 +135,7 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     CDEventsEventStreamCreationFlags creationFlags = kCDEventsDefaultEventStreamFlags;
     
     if (systemVersionIsAtLeast(10,6)) {
-        creationFlags |= kFSEventStreamCreateFlagIgnoreSelf;
+        creationFlags |= kFSEventStreamCreateFlagIgnoreSelf; //consider removal
     }
     
     if (systemVersionIsAtLeast(10,7)) {
@@ -131,7 +198,7 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     //[_events setIgnoreEventsFromSubDirectories:YES];
 #endif
     
-    NSLog(@"-[CDEventsTestAppController run]:\n%@\n------\n%@",
+    NSLog(@"-[Recorder Stream Run]:\n%@\n------\n%@",
           _events,
           [_events streamDescription]);
 }
@@ -164,6 +231,41 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
 	NSLog(@"[Delegate] URLWatcher: %@\nEvent: %@", urlWatcher, event);
 }
 
+- (NSString *)removeEmptySpacesFromString:(NSString *)string
+{
+    return [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
+- (void)startUploaderFileTransfer:(NSURL *)sourceURL
+                       watchedURL:(NSURL *)watchedURL
+{
+    //The following performs the uploader file transfers...
+
+    __block NSURL *blockSourceURL = sourceURL;
+
+   __block NSString *cityNamePathComponent = [[[[[sourceURL path] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""] lastPathComponent];
+    __block NSString *firstPathComponent = [NSString stringWithFormat:@"/%@", cityNamePathComponent];
+    __block NSString *secondPathComponent = [[[sourceURL path] stringByDeletingLastPathComponent] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""];
+    __block NSString *thirdPathComponent = [[sourceURL path] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""];
+
+    
+    if ([[NSFileManager defaultManager] isReadableFileAtPath:[blockSourceURL path]] ) {
+        BOOL firstPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:firstPathComponent]];
+        if (! firstPath) {
+            // Display error...
+        }
+        
+        BOOL secondPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:secondPathComponent]];
+        if (! secondPath) {
+            // Display error...
+        }
+        
+        BOOL filePath = [_ftp uploadFile:[blockSourceURL path] to:[self removeEmptySpacesFromString:thirdPathComponent] progress:nil];
+        if (! filePath) {
+            // Display an error...
+        }
+    }
+}
 
 - (void)startHighQualityFileTransfer:(NSURL *)sourceURL
                       destinationURL:(NSURL *)destinationURL
