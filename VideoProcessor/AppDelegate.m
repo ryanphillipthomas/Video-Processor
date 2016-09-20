@@ -29,7 +29,8 @@
 }
 
 - (void)registerDefaults {
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"Media Type" : @"",
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"Quality Type" : @"",
+                                                              @"Media Type" : @"",
                                                               @"ScratchURL" : @"",
                                                               @"DeathStarURL" : @"",
                                                               @"Location Name" : @"",

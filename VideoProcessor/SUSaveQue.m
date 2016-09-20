@@ -29,4 +29,12 @@
     return _saveQueue;
 }
 
+- (NSOperationQueue *) uploadQueue {
+    if (!_uploadQueue) {
+        self.uploadQueue = [NSOperationQueue new];
+        _uploadQueue.maxConcurrentOperationCount = 1;
+    }
+    return _uploadQueue;
+}
+
 @end

@@ -22,6 +22,8 @@
 /** Credentials used to login to the server. */
 @property (nonatomic, readonly) FTPCredentials* credentials;
 
+@property (nonatomic, readonly) dispatch_queue_t queue;
+
 /**
  The last encountered error. Please note that this value does not get nil'ed
  when a new operation takes place. Therefore, do not use 'lastError' as a way

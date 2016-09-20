@@ -18,6 +18,9 @@
     [super viewDidLoad];
     [self updateUIWithDefaults];
     [self startMonitoring];
+    
+    self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
+
     // Do view setup here.
 }
 
@@ -50,6 +53,12 @@
             [self startMonitoring];
         }
     }
+}
+
+
+- (IBAction)viewOnlineDirectorySelected:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.actorreplay.com/clients/video_uploader/"]];
 }
 
 - (void)compressionURLChanged:(NSString *)stringURL
@@ -89,6 +98,7 @@
         
         self.isMonitoring = NO;
     }
+    
 }
 
 - (void)stopMonitoring
@@ -112,5 +122,24 @@
     
     return YES;
 }
+
+- (void)didStartUploading:(NSString *)fileName
+{
+    [self uploadDidStart];
+}
+
+- (void)didFinishUploading
+{
+    [self uploadDidFinish];
+}
+
+- (void)uploadDidStart {
+    self.transferStatusLabel.stringValue = [NSString stringWithFormat:@"Uploading Files..."];
+    
+}
+- (void)uploadDidFinish{
+    self.transferStatusLabel.stringValue = @"Ready to upload files...";
+}
+
 
 @end

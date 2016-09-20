@@ -14,5 +14,6 @@
 
 /// Used to serialize Core Data operations.
 @property (nonatomic) NSOperationQueue *saveQueue;
+@property (nonatomic) NSOperationQueue *uploadQueue;
 
 @end

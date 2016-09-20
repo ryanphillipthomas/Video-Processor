@@ -15,6 +15,9 @@ QueueWindowController * _queueWindowController;
     [super viewDidLoad];
     [self updateUIWithDefaults];
     [self startMonitoring];
+    
+    self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
+
 }
 
 - (IBAction)viewTransferQue:(id)sender {
@@ -54,6 +57,7 @@ QueueWindowController * _queueWindowController;
 
 - (void)didUpdateCompressionValue:(NSNumber *)value
 {
+    self.compressionIndicator.hidden = false;
     [self.compressionIndicator setMinValue:0.0];
     [self.compressionIndicator setMaxValue:1.0];
     [self.compressionIndicator setDoubleValue:value.floatValue];

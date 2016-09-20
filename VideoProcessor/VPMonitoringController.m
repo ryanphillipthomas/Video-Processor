@@ -59,6 +59,7 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
                                              port:21
                                          username:@"video@actorreplay.com"
                                          password:@"Ryan1217!"];
+    
 
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
@@ -239,33 +240,58 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
 - (void)startUploaderFileTransfer:(NSURL *)sourceURL
                        watchedURL:(NSURL *)watchedURL
 {
-    //The following performs the uploader file transfers...
-
     __block NSURL *blockSourceURL = sourceURL;
 
    __block NSString *cityNamePathComponent = [[[[[sourceURL path] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""] lastPathComponent];
     __block NSString *firstPathComponent = [NSString stringWithFormat:@"/%@", cityNamePathComponent];
     __block NSString *secondPathComponent = [[[sourceURL path] stringByDeletingLastPathComponent] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""];
     __block NSString *thirdPathComponent = [[sourceURL path] stringByReplacingOccurrencesOfString:[watchedURL path] withString:@""];
-
     
     if ([[NSFileManager defaultManager] isReadableFileAtPath:[blockSourceURL path]] ) {
-        BOOL firstPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:firstPathComponent]];
-        if (! firstPath) {
-            // Display error...
-        }
+        [[[SUSaveQue sharedManager] uploadQueue] addOperationWithBlock:^{
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.delegate didStartUploading:[blockSourceURL lastPathComponent]];
+            }];
+            
+            BOOL firstPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:firstPathComponent]];
+            if (! firstPath) {
+                // Display error...
+            }
         
-        BOOL secondPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:secondPathComponent]];
-        if (! secondPath) {
-            // Display error...
-        }
+            BOOL secondPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:secondPathComponent]];
+            if (! secondPath) {
+                // Display error...
+            }
+            
+            ++ _uploadCounter;
         
-        BOOL filePath = [_ftp uploadFile:[blockSourceURL path] to:[self removeEmptySpacesFromString:thirdPathComponent] progress:nil];
-        if (! filePath) {
-            // Display an error...
-        }
+            [_ftp uploadFile:[blockSourceURL path] to:[self removeEmptySpacesFromString:thirdPathComponent]
+                    progress:NULL
+                     success:^{
+                         -- _uploadCounter;
+                         if (_uploadCounter == 0) {
+                             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                 [self.delegate didFinishUploading];
+                             }];
+                         }
+
+            } failure:^(NSError *error) {
+                    -- _uploadCounter;
+
+                    if (_uploadCounter == 0) {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            [self.delegate didFinishUploading];
+                        }];
+                    }
+
+            }];
+        }];
     }
 }
+
+
+
 
 - (void)startHighQualityFileTransfer:(NSURL *)sourceURL
                       destinationURL:(NSURL *)destinationURL
@@ -337,16 +363,14 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
                 // An error has occurred, do something to handle it
                 NSLog(@"Failed to create directory \"%@\". Error: %@", [blockDestinationURL path], error);
             }
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                
-                if ([self isPhotoType:blockSourceURL]) {
-                    [self getImageAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
-                }
-                
-                if ([self isVideoType:blockSourceURL]) {
-                    [self getVideoAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
-                }
-            }];
+            
+            if ([self isPhotoType:blockSourceURL]) {
+                [self getImageAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
+            }
+            
+            if ([self isVideoType:blockSourceURL]) {
+                [self getVideoAtURL:blockSourceURL andSaveToSourceURL:blockDestinationURL];
+            }
         }
     }];
 }
@@ -379,13 +403,20 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     NSURL *blockDestinationURL = [[url URLByDeletingLastPathComponent] URLByAppendingPathComponent:finalFileName];
 
     //todo dynamically detect image size and do a scaled reduction...
-    NSSize testSize = NSMakeSize (200, 200);
+    
     NSImage *sourceImage = [[NSImage alloc] initByReferencingURL:url];
-    NSImage *resizedImage = [self imageResize:sourceImage newSize:testSize];
+    
+    CIImage *_imageCIImage = [CIImage imageWithContentsOfURL:url];
+    NSRect _rectFromCIImage = [_imageCIImage extent];
+    
+    NSSize halfSize = NSMakeSize (_rectFromCIImage.size.width / 2, _rectFromCIImage.size.height / 2);
+    NSImage *resizedImage = [self imageResize:sourceImage newSize:halfSize];
+    
     [resizedImage saveAsJpegWithName:blockDestinationURL.path];
     
-    //iniate file copy transfer to compressed location....
-    [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
+    }];
 }
 
 -(void)getVideoAtURL:(NSURL *)url andSaveToSourceURL:(NSURL *)sourceURL
@@ -400,7 +431,9 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     [self convertVideoToLowQuailtyWithInputURL:url outputURL:blockDestinationURL handler:^(AVAssetExportSession *session) {
         
         //iniate file copy transfer to compressed location....
-        [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
+        }];
     }];
 }
 
@@ -417,25 +450,10 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
      {
          handler(self.exportSession);
      }];
-
-    self.exportProgressBarTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateExportDisplay) userInfo:nil repeats:YES];
-}
-
-- (void)updateExportDisplay {
-    [self setExportProgressBarValue:[NSNumber numberWithFloat:self.exportSession.progress]];
-    [self.delegate didUpdateCompressionValue:self.exportProgressBarValue];
-    
-    if (self.exportProgressBarValue.floatValue > .99) {
-        [self.exportProgressBarTimer invalidate];
-        
-        [self.delegate didUpdateCompressionValue:@0];
-    }
 }
 
 - (NSImage *)imageResize:(NSImage*)anImage newSize:(NSSize)newSize {
     NSImage *sourceImage = anImage;
-   // [sourceImage setScalesWhenResized:YES];
-    
     // Report an error if the source isn't a valid image
     if (![sourceImage isValid]){
         NSLog(@"Invalid Image");
@@ -450,5 +468,6 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     }
     return nil;
 }
+
 
 @end
