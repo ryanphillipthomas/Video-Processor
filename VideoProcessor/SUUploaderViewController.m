@@ -14,6 +14,21 @@
 
 @implementation SUUploaderViewController
 
+- (void)viewWillDisappear
+{
+    [self stopMonitoring];
+}
+
+- (void)didUpdateCompressionValue:(NSNumber *)value
+{
+//do nothing...
+}
+
+- (void)didAddFileToQueSourceURL:(NSURL *)sourceURL andDestination:(NSURL *)destinationURL
+{
+    //do nothing...
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateUIWithDefaults];
@@ -55,6 +70,29 @@
     }
 }
 
+- (IBAction)chooseManualFileForUpload:(id)sender {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setDirectoryURL:self.compressionURL];
+    [panel setCanChooseFiles:YES];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:YES]; // yes if more than one dir is allowed
+    
+    NSInteger clicked = [panel runModal];
+    
+    if (clicked == NSFileHandlingPanelOKButton) {
+        NSURL *fileURL = [NSURL new];
+
+        for (NSURL *url in [panel URLs]) {
+            fileURL = url;
+        }
+        
+        if (self.isMonitoring) {
+            [[self monitoringController ] uploadManualFileFromURL:fileURL compressedDestinationURL:self.compressionURL];
+        }
+        /// send manual file into processing with this file url
+
+    }
+}
 
 - (IBAction)viewOnlineDirectorySelected:(id)sender
 {

@@ -121,6 +121,12 @@ bool systemVersionIsAtLeast(SInt32 major, SInt32 minor)
           [_events streamDescription]);
 }
 
+- (void)uploadManualFileFromURL:(NSURL *)localFileURL compressedDestinationURL:(NSURL *)compressedDestinationURL
+{
+    if (![self fileIsBeingCopied:localFileURL]) {
+            [self startUploaderFileTransfer:localFileURL watchedURL:compressedDestinationURL];
+    }
+}
 
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL
@@ -250,10 +256,6 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     if ([[NSFileManager defaultManager] isReadableFileAtPath:[blockSourceURL path]] ) {
         [[[SUSaveQue sharedManager] uploadQueue] addOperationWithBlock:^{
             
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.delegate didStartUploading:[blockSourceURL lastPathComponent]];
-            }];
-            
             BOOL firstPath = [_ftp createDirectoryAtPath:[self removeEmptySpacesFromString:firstPathComponent]];
             if (! firstPath) {
                 // Display error...
@@ -264,28 +266,36 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
                 // Display error...
             }
             
-            ++ _uploadCounter;
-        
-            [_ftp uploadFile:[blockSourceURL path] to:[self removeEmptySpacesFromString:thirdPathComponent]
-                    progress:NULL
-                     success:^{
-                         -- _uploadCounter;
-                         if (_uploadCounter == 0) {
-                             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                 [self.delegate didFinishUploading];
-                             }];
-                         }
-
-            } failure:^(NSError *error) {
-                    -- _uploadCounter;
-
-                    if (_uploadCounter == 0) {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            [self.delegate didFinishUploading];
-                        }];
-                    }
-
-            }];
+            if ([_ftp fileSizeAtPath:[self removeEmptySpacesFromString:thirdPathComponent]] == -1) {
+                
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [self.delegate didStartUploading:[blockSourceURL lastPathComponent]];
+                }];
+                
+                ++ _uploadCounter;
+                
+                [_ftp uploadFile:[blockSourceURL path] to:[self removeEmptySpacesFromString:thirdPathComponent]
+                        progress:NULL
+                         success:^{
+                             -- _uploadCounter;
+                             if (_uploadCounter == 0) {
+                                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                     [self.delegate didFinishUploading];
+                                 }];
+                             }
+                             
+                         } failure:^(NSError *error) {
+                             -- _uploadCounter;
+                             
+                             if (_uploadCounter == 0) {
+                                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                     [self.delegate didFinishUploading];
+                                 }];
+                             }
+                             
+                         }];
+            }
+            
         }];
     }
 }
@@ -410,10 +420,11 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     NSRect _rectFromCIImage = [_imageCIImage extent];
     
     NSSize halfSize = NSMakeSize (_rectFromCIImage.size.width / 2, _rectFromCIImage.size.height / 2);
+    [self.delegate didUpdateCompressionValue:@0];
     NSImage *resizedImage = [self imageResize:sourceImage newSize:halfSize];
-    
     [resizedImage saveAsJpegWithName:blockDestinationURL.path];
-    
+    [self.delegate didUpdateCompressionValue:@1];
+
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.delegate didAddFileToQueSourceURL:blockDestinationURL andDestination:sourceURL];
     }];
@@ -446,8 +457,11 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     self.exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPreset640x480];
     self.exportSession.outputURL = outputURL;
     self.exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+    
+    [self.delegate didUpdateCompressionValue:@0];
     [self.exportSession exportAsynchronouslyWithCompletionHandler:^(void)
      {
+         [self.delegate didUpdateCompressionValue:@1];
          handler(self.exportSession);
      }];
 }

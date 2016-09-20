@@ -722,7 +722,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4c9-dh-CXo">
-                                <rect key="frame" x="131" y="171" width="203" height="17"/>
+                                <rect key="frame" x="131" y="138" width="203" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Not Set" id="A5P-Vb-eN6">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -730,7 +730,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nku-Ig-ahB">
-                                <rect key="frame" x="113" y="185" width="225" height="32"/>
+                                <rect key="frame" x="113" y="152" width="225" height="32"/>
                                 <buttonCell key="cell" type="push" title="Choose Compression Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IO5-u9-OK4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -743,21 +743,31 @@
                                 <rect key="frame" x="217" y="58" width="16" height="16"/>
                             </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lvb-FO-IJy">
-                                <rect key="frame" x="117" y="172" width="15" height="19"/>
+                                <rect key="frame" x="117" y="139" width="15" height="19"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="▹" id="WBy-St-xGW">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button toolTip="View the active file transfer queue." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RbL-oY-ChJ">
-                                <rect key="frame" x="113" y="218" width="225" height="32"/>
-                                <buttonCell key="cell" type="push" title="View Online Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zpQ-Rh-34h">
+                            <button toolTip="View the active file transfer queue." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5q-k6-8Fy">
+                                <rect key="frame" x="288" y="218" width="156" height="32"/>
+                                <buttonCell key="cell" type="push" title="View Online Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o8b-N6-5gh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="viewOnlineDirectorySelected:" target="lhZ-LJ-AoQ" id="mf3-xk-f6A"/>
+                                    <action selector="viewOnlineDirectorySelected:" target="lhZ-LJ-AoQ" id="8ez-dm-BSB"/>
+                                </connections>
+                            </button>
+                            <button toolTip="View the active file transfer queue." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RbL-oY-ChJ">
+                                <rect key="frame" x="287" y="189" width="158" height="32"/>
+                                <buttonCell key="cell" type="push" title="Manually Upload File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zpQ-Rh-34h">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="chooseManualFileForUpload:" target="lhZ-LJ-AoQ" id="J10-b5-nUm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -952,11 +962,20 @@
                             <progressIndicator hidden="YES" wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hrt-qX-DcS">
                                 <rect key="frame" x="166" y="4" width="176" height="20"/>
                             </progressIndicator>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFI-NG-Aqj">
+                                <rect key="frame" x="8" y="6" width="498" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Compressing files..." id="CAr-YP-uNS">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="compressionIndicator" destination="hrt-qX-DcS" id="HVb-os-w5h"/>
                         <outlet property="compressionLocationLabel" destination="8eW-5J-NYw" id="KGF-47-YEE"/>
+                        <outlet property="compressionStatusLabel" destination="gFI-NG-Aqj" id="Y9V-n4-c5f"/>
                         <outlet property="createRoutineSubFolderButton" destination="XJa-bQ-spN" id="abN-rF-8Bj"/>
                         <outlet property="deathStarLocationLabel" destination="KUu-iE-8iC" id="xFV-cb-Bla"/>
                         <outlet property="locationNameTextField" destination="1B9-nq-UbD" id="194-uH-LGq"/>

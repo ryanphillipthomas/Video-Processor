@@ -54,6 +54,9 @@
 @property (nonatomic, strong) AVAssetExportSession *exportSession;
 @property (nonatomic) NSInteger uploadCounter;
 
+@property (nonatomic, strong) NSTimer *exportProgressBarTimer;
+@property (nonatomic, strong) NSNumber *exportProgressBarValue;
+
 - (void)runWithWatchedURL:(NSURL *)watchedURL
 highQualityDestinationURL:(NSURL *)highQualityDestinationURL
  compressedDestinationURL:(NSURL *)compressedDestinationURL
@@ -61,6 +64,8 @@ highQualityDestinationURL:(NSURL *)highQualityDestinationURL
     shouldSendFullQuality:(BOOL)shouldSendFullQuality;
 
 - (void)runWithWatchedURL:(NSURL *)watchedURL;
+
+- (void)uploadManualFileFromURL:(NSURL *)localFileURL compressedDestinationURL:(NSURL *)compressedDestinationURL;
 
 - (void)stop;
 

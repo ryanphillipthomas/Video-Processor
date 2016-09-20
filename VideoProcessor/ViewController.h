@@ -34,9 +34,9 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (weak) IBOutlet NSProgressIndicator *monitoringIndicator;
-@property (weak) IBOutlet NSProgressIndicator *compressionIndicator;
 
 @property (weak) IBOutlet NSTextField *transferStatusLabel;
+@property (weak) IBOutlet NSTextField *compressionStatusLabel;
 
 @property (nonatomic) BOOL isMonitoring;
 @end

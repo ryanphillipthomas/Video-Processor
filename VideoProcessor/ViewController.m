@@ -11,6 +11,16 @@
 @implementation ViewController
 QueueWindowController * _queueWindowController;
 
+- (void)didStartUploading:(NSString *)fileName
+{
+//do nothing
+}
+
+- (void)didFinishUploading
+{
+//do nothing
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateUIWithDefaults];
@@ -18,6 +28,11 @@ QueueWindowController * _queueWindowController;
     
     self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
 
+}
+
+- (void)viewWillDisappear
+{
+    [self stopMonitoring];
 }
 
 - (IBAction)viewTransferQue:(id)sender {
@@ -57,10 +72,11 @@ QueueWindowController * _queueWindowController;
 
 - (void)didUpdateCompressionValue:(NSNumber *)value
 {
-    self.compressionIndicator.hidden = false;
-    [self.compressionIndicator setMinValue:0.0];
-    [self.compressionIndicator setMaxValue:1.0];
-    [self.compressionIndicator setDoubleValue:value.floatValue];
+    if (value.integerValue > 0) {
+        [self.compressionStatusLabel setHidden:YES];
+    } else {
+        [self.compressionStatusLabel setHidden:NO];
+    }
 }
 
 - (void)didErrorFile:(NSString *)fileName
