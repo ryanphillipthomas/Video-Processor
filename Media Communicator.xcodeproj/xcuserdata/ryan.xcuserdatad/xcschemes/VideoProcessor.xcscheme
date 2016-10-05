@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "946AA3701C3F3E2D00697734"
                BuildableName = "Death Star Communicator.app"
-               BlueprintName = "Death Star Communicator"
-               ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+               BlueprintName = "Media Communicator"
+               ReferencedContainer = "container:Media Communicator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "946AA3861C3F3E2D00697734"
-               BuildableName = "Death Star Communicator.xctest"
-               BlueprintName = "Death Star CommunicatorTests"
-               ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+               BuildableName = "Media Communicator.xctest"
+               BlueprintName = "Media CommunicatorTests"
+               ReferencedContainer = "container:Media Communicator.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "946AA3911C3F3E2D00697734"
-               BuildableName = "Death Star Communicator.xctest"
-               BlueprintName = "Death Star CommunicatorUITests"
-               ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+               BuildableName = "Media Communicator.xctest"
+               BlueprintName = "Media CommunicatorUITests"
+               ReferencedContainer = "container:Media Communicator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,8 +54,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "946AA3701C3F3E2D00697734"
             BuildableName = "Death Star Communicator.app"
-            BlueprintName = "Death Star Communicator"
-            ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+            BlueprintName = "Media Communicator"
+            ReferencedContainer = "container:Media Communicator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -77,8 +77,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "946AA3701C3F3E2D00697734"
             BuildableName = "Death Star Communicator.app"
-            BlueprintName = "Death Star Communicator"
-            ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+            BlueprintName = "Media Communicator"
+            ReferencedContainer = "container:Media Communicator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,8 +96,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "946AA3701C3F3E2D00697734"
             BuildableName = "Death Star Communicator.app"
-            BlueprintName = "Death Star Communicator"
-            ReferencedContainer = "container:Death Star Communicator.xcodeproj">
+            BlueprintName = "Media Communicator"
+            ReferencedContainer = "container:Media Communicator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

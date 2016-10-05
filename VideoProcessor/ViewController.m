@@ -26,6 +26,7 @@ QueueWindowController * _queueWindowController;
     [self updateUIWithDefaults];
     [self startMonitoring];
     
+    
     self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
 
 }
