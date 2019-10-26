@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "946AA3701C3F3E2D00697734"
-               BuildableName = "Death Star Communicator.app"
+               BuildableName = "Media Communicator.app"
                BlueprintName = "Media Communicator"
                ReferencedContainer = "container:Media Communicator.xcodeproj">
             </BuildableReference>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "946AA3701C3F3E2D00697734"
+            BuildableName = "Media Communicator.app"
+            BlueprintName = "Media Communicator"
+            ReferencedContainer = "container:Media Communicator.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,17 +58,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "946AA3701C3F3E2D00697734"
-            BuildableName = "Death Star Communicator.app"
-            BlueprintName = "Media Communicator"
-            ReferencedContainer = "container:Media Communicator.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -76,13 +74,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "946AA3701C3F3E2D00697734"
-            BuildableName = "Death Star Communicator.app"
+            BuildableName = "Media Communicator.app"
             BlueprintName = "Media Communicator"
             ReferencedContainer = "container:Media Communicator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -95,7 +91,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "946AA3701C3F3E2D00697734"
-            BuildableName = "Death Star Communicator.app"
+            BuildableName = "Media Communicator.app"
             BlueprintName = "Media Communicator"
             ReferencedContainer = "container:Media Communicator.xcodeproj">
          </BuildableReference>

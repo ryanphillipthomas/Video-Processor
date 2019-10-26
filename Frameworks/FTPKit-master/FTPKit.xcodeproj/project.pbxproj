@@ -258,6 +258,9 @@
 		F27BA1C61802FE7E00584A9E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Upstart Illustration LLC";
 				TargetAttributes = {
